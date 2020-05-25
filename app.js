@@ -5,9 +5,10 @@ var socketIo = require("socket.io");
 
 const PORT = 8080;
 
-app.use(express.static(__dirname + "/build"));
+app.use(express.static(__dirname + "/app"));
 
 app.get("/", (req, res) => {
+  res.send({ message: 'hi' })
   res.sendFile(__dirname + "/app/index.html");
 });
 
