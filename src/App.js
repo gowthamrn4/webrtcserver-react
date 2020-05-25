@@ -12,7 +12,7 @@ function App() {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [status, setStatus] = useState("Please wait...");
   const [socket, setSocket] = useState(null);
-  const [serverUrl] = useState("https://947f3a2a.ngrok.io/");
+  const [serverUrl] = useState("https://orangechatapp.herokuapp.com/");
   const [pcConfig] = useState({
     iceServers: [
       // {
@@ -61,7 +61,7 @@ function App() {
     //   initPeerConnectionCallbacks();
     // }
     console.log("USE EFT ", localStream)
-    if(localStream){
+    if (localStream) {
       socketEventHandler();
       whoIsOnline();
     }
@@ -78,7 +78,7 @@ function App() {
   }, [socket]);
 
   useEffect(() => {
-    if(localStream){
+    if (localStream) {
       socketEventHandler();
       console.log("Selected Video Changed ", selectedVideo)
     }
@@ -106,7 +106,7 @@ function App() {
       .getUserMedia(mediaConstraints)
       .then((stream) => {
         setLocalStream(stream);
-        console.log("GetLocalStream ", stream )
+        console.log("GetLocalStream ", stream)
         // whoIsOnline();
         // if (peerConn) peerConn.addStream(stream);
       })
@@ -187,7 +187,7 @@ function App() {
     socket.on("offer", (data) => {
       createPeerConnection(data.socketId, (pc) => {
         if (pc) {
-          console.log("localStream",localStream)
+          console.log("localStream", localStream)
           // pc.addStream(localStream);
           pc.setRemoteDescription(new RTCSessionDescription(data.sdp)).then(
             () => {
@@ -218,7 +218,7 @@ function App() {
       const pc = peerConnections[data.socketId];
       pc.setRemoteDescription(
         new RTCSessionDescription(data.sdp)
-      ).then(() => {});
+      ).then(() => { });
     });
   };
 
@@ -299,7 +299,7 @@ function App() {
         setRemoteStreams(tempRemoteStreams);
       };
 
-      pc.close = () => {};
+      pc.close = () => { };
 
       if (localStream) pc.addStream(localStream);
 

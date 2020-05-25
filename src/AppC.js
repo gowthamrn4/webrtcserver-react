@@ -13,7 +13,7 @@ class AppC extends Component {
       peerConnections: {},
       selectedVideo: null,
       status: "Please wait...",
-      serverUrl: "http://localhost:8080/",
+      serverUrl: "https://orangechatapp.herokuapp.com/",
       //   serverUrl: "/",
       pcConfig: {
         iceServers: [
