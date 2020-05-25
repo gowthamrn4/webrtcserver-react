@@ -3,13 +3,12 @@ const app = express();
 var http = require("http");
 var socketIo = require("socket.io");
 
-const PORT = 8080;
-
-// app.use(express.static(__dirname + "/app"));
+const port = process.env.PORT || 8080;
+app.use(express.static(__dirname + "/app"));
 
 app.get("/", (req, res) => {
   res.send({ message: 'hi' })
-  // res.sendFile(__dirname + "/app/index.html");
+  res.sendFile(__dirname + "/app/index.html");
 });
 
 const server = http.createServer(app);
@@ -102,8 +101,8 @@ peers.on("connection", (socket) => {
   });
 });
 
-server.listen(PORT, () => console.log("Server is listening to port 8080"));
+server.listen(port, () => console.log("Server is listening to port 8080"));
 
-// server.listen(3000, '192.168.43.178', function () {
+// server.listen(port, '192.168.43.178', function () {
 //   console.log('Server running at 3000')
 // })
