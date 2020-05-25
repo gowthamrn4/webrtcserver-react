@@ -8,7 +8,7 @@ const PORT = 8080;
 app.use(express.static(__dirname + "/build"));
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/build/index.html");
+  res.sendFile(__dirname + "/app/index.html");
 });
 
 const server = http.createServer(app);
