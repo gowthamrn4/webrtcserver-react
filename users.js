@@ -32,4 +32,20 @@ const getUser = ({id, data}) => {
     return null;
 }
 
-module.exports = {  removeUser, getUser, joinUser };
+
+const addUser = ({ id, name }) => {
+    name = name.trim().toLowerCase();
+
+    const existingUser = users.find((user) =>  user.name === name); 
+    if(existingUser){
+        return {error: 'Username is taken'}
+    }
+    const user = { id, name, messages:[],typing:false};
+    users.push(user);
+    return { user } 
+} 
+
+
+const getUsersInRoom = (room) => users;
+
+module.exports = { addUser, removeUser, getUser, getUsersInRoom, joinUser };
