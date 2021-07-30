@@ -6,7 +6,7 @@ var socketIo = require("socket.io");
 const { removeUser, getUser, joinUser} = require ('./users.js');
 
 const port = process.env.PORT || 8080;
-app.use(express.static(__dirname + "/app"));
+// app.use(express.static(__dirname + "/app"));
 
 app.get("/", (req, res) => {
   res.send({ message: 'hi' })
