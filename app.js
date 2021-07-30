@@ -2,12 +2,13 @@ var express = require("express");
 const app = express();
 var http = require("http");
 var socketIo = require("socket.io");
+const cors = require('cors');
 
 const { removeUser, getUser, joinUser} = require ('./users.js');
 
 const port = process.env.PORT || 8080;
 // app.use(express.static(__dirname + "/app"));
-
+app.use(cors());
 app.get("/", (req, res) => {
   res.send({ message: 'hi' })
 });
